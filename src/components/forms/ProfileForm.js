@@ -16,7 +16,7 @@ import { SubmitButton } from "@/components/custom/SubmitButton";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label"
-import { StrapiErrors } from "@components/custom/StrapiErrors";
+import { StrapiErrors } from "@/components/custom/StrapiErrors";
 
 const INITIAL_STATE = {
   data: null,
