@@ -9,7 +9,7 @@ import { uploadProfileImageAction } from "@/data/actions/profile-actions";
 import { SubmitButton } from "@/components/custom/SubmitButton";
 import ImagePicker from "@/components/custom/ImagePicker";
 import { ZodErrors } from "@/components/custom/ZodErrors";
-import { StrapiErrors } from "@/components/custom/strapiErrors";
+import { StrapiErrors } from "@components/custom/StrapiErrors";
 
 const initialState = {
   message: null,
