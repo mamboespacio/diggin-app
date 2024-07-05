@@ -22,13 +22,18 @@
 //   );
 // }
 
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 export default async function Home() {
 
 
   return (
-    <main className="container flex h-max w-full flex-grow flex-col items-center">
-      <h1 className="text-5xl font-bold">title</h1>
-      <p className="text-xl mt-4">description</p>
+    <main className="container flex h-max w-full flex-grow flex-col items-center  text-center py-16">
+      <h1 className="mt-12 text-5xl font-bold">DIGGIN</h1>
+      <p className="text-xl mt-4">Aca una home para los que entran sin haberse loguedo</p>
+      <Link className="mt-8" href="/signin">
+        <Button>Sign In</Button>
+      </Link>
     </main>
   );
 }

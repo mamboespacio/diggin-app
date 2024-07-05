@@ -1,3 +1,5 @@
+"use server"
+
 import qs from "qs";
 import { getAuthToken } from "./services/get-token";
 
@@ -76,29 +78,37 @@ async function fetchData(url) {
 // }
 
 
-// export async function getSummaries(queryString, currentPage) {
-//   const PAGE_SIZE = 4;
+export async function getAlbums(currentPage) {
+  const PAGE_SIZE = 2;
 
+  const query = qs.stringify({
+    sort: ["createdAt:desc"],
+    // filters: {
+    //   $or: [
+    //     { title: { $containsi: queryString } },
+    //     { summary: { $containsi: queryString } },
+    //   ],
+    // },
+    populate: {
+      tracks: {
+        populate: true,
+      },
+      user: {
+        populate: true,
+      }
+    },
+    pagination: {
+      pageSize: PAGE_SIZE,
+      page: currentPage,
+    },
+  });
 
-//   const query = qs.stringify({
-//     sort: ["createdAt:desc"],
-//     filters: {
-//       $or: [
-//         { title: { $containsi: queryString } },
-//         { summary: { $containsi: queryString } },
-//       ],
-//     },
-//     pagination: {
-//       pageSize: PAGE_SIZE,
-//       page: currentPage,
-//     },
-//   });
+  // const url = new URL("/api/albums", baseUrl);
+  // url.search = query;
 
-//   const url = new URL("/api/summaries", baseUrl);
-//   url.search = query;
-
-//   return fetchData(url.href);
-// }
+  // return fetchData(url.href);
+  return fetchData(`${baseUrl}/api/albums?${query}`);
+}
 
 export async function getUserByUserName(userName) {
   const query = qs.stringify({

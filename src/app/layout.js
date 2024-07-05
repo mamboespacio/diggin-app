@@ -6,7 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 import { getGlobalData } from "@/data/loaders";
 import { Header } from "@/components/custom/Header";
 import { BottomNav } from "@/components/custom/BottomNav";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
+import { PlayerContextProvider } from "@/context/PlayerContext";
+
 
 export const metadata = {
   title: "Diggin",
@@ -27,11 +29,13 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex h-full w-full flex-col overflow-y-auto overflow-x-hidden">
-            <Header data={globalData.header} />
-            <div className="lg:border w-full max-w-screen-lg mx-auto">{children}</div>
-            <BottomNav></BottomNav>
-          </div>
+          <PlayerContextProvider>
+            <div className="flex h-full w-full flex-col">
+              <Header data={globalData.header} />
+              <div className="lg:border w-full max-w-screen-lg mx-auto">{children}</div>
+              <BottomNav></BottomNav>
+            </div>
+          </PlayerContextProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 
 import { CircleUser, LayoutDashboard, Library, MessageSquare, Plus, Search, User } from "lucide-react";
 import Link from "next/link";
+import { MusicPlayer } from "@/components/music/MusicPlayer";
 
 export const BottomNav = () => {
   return (
@@ -12,9 +13,9 @@ export const BottomNav = () => {
         <Link href="/discover" className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
           <Search className="size-5"/>
         </Link>
-        <Link href="/" className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+        <button className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
           <Plus className="size-5"/>
-        </Link>
+        </button>
         <Link href="/" className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
           <MessageSquare className="size-5"/>
         </Link>

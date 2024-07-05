@@ -1,3 +1,4 @@
+import { getAlbums } from "@/data/loaders";
 import {
   Tabs,
   TabsContent,
@@ -9,9 +10,11 @@ import { MusicFeed } from "@/components/music/MusicFeed";
 export default async function HomePage({
   params,
 }) {
+  const data = await getAlbums();
+  if (data?.error?.status === 404) return notFound();
   return(
-    <main className="my-16">
-      <MusicFeed></MusicFeed>
+    <main className="mt-20 mb-36">
+      <MusicFeed initialData={data} />
     </main>
   );
 }

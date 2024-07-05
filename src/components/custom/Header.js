@@ -44,7 +44,7 @@ export async function Header({ data }) {
   const { logoText, authButton } = data;
   return (
     <Fragment>
-      <header className="fixed w-full top-0 flex h-16 items-center justify-between gap-4 border-b bg-black px-4 md:px-6">
+      <header className="fixed z-50 w-full top-0 flex h-16 items-center justify-between gap-4 border-b bg-black px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="/"
@@ -126,7 +126,7 @@ export async function Header({ data }) {
                 </Link>
               )}
               <Link
-                href="#"
+                href="/profile"
                 className="text-muted-foreground hover:text-foreground"
               >
                 Profile
@@ -137,12 +137,7 @@ export async function Header({ data }) {
               >
                 Invite a Friend
               </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <LogoutButton />
-              </Link>
+              <LogoutButton />
             </nav>
           </SheetContent>
         </Sheet>
