@@ -1,9 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link";
 import { useContext, useState } from 'react';
 import { useInView } from "react-intersection-observer";
 import { cn } from "@/lib/utils";
+import { formatDistance } from "date-fns";
 
 import { Ellipsis, Plus, ShoppingBag, Heart, MessageCircle, Share2, Flag } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -24,8 +26,9 @@ import { usePlayerContext } from '@/context/PlayerContext';
 
 export const MusicPost = (item) => {
   const album = item.item;
-  const tracks = album.tracks.data;
-  // console.log(tracks);
+  const tracks = album?.tracks.data;
+  const user = album?.users_permissions_user;
+  // console.log(album);
   const [isOpen, setIsOpen] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false);
   const { playerState, setPlayerState } = usePlayerContext();
@@ -48,8 +51,11 @@ export const MusicPost = (item) => {
             />
           </div>
           <div className="font-medium dark:text-white">
-            <div>Creator Name</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">@dobao - 8 min ago</div>
+            <div>{user.firstName + ' ' + user.lastName}</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400 space-x-1">
+              <span><Link href={"/" + user.username}>@{user.username}</Link></span>
+              <span>· {formatDistance(Date.now(), album.createdAt)} ago</span>
+            </div>
           </div>
         </div>
         <div className="ml-4 h-full flex-col space-y-1 xs:flex">

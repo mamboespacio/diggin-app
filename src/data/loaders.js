@@ -93,7 +93,7 @@ export async function getAlbums(currentPage) {
       tracks: {
         populate: true,
       },
-      user: {
+      users_permissions_user: {
         populate: true,
       }
     },

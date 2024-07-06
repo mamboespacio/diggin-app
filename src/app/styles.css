@@ -60,7 +60,8 @@
     position: relative;
     border: none;
     border-radius: 50%;
-    background: var(--rpcc-button-color, var(--rpcc-color));
+    /* background: var(--rpcc-button-color, var(--rpcc-color)); */
+    background: transparent;
     cursor: pointer;
   }
   

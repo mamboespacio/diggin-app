@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { cn } from "@/lib/utils";
 
 const getCircleCenterCoords = ({ x, y, width }) => {
   const radius = width / 2;
@@ -26,13 +27,13 @@ const PlayIcon = ({ playing }) => <span className={`rpcc-play-icon${playing ? ' 
 const ReactPlayerCircleControls = ({
   ariaLabels,
   color = 'White',
-  iconColor,
+  iconColor = 'White',
   icon,
   loaded = 0,
   progressSize = 12,
   played = 0,
   playing,
-  size = 80,
+  size = 120,
   onSeek,
   onTogglePlaying
 }) => {
@@ -60,7 +61,7 @@ const ReactPlayerCircleControls = ({
 
   return (
     <div
-      className="rpcc-player flex w-full h-full justify-center items-center"
+      className={cn("rpcc-player flex w-full h-full justify-center items-center transition-all", playing ? 'opacity-100' : 'opacity-0')}
       style={vars} onClick={onSeek && onSeekClick}
     >
       <div ref={playerRef} className="rpcc-player-inner">
